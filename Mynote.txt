@@ -1,0 +1,18 @@
+1) create pin component(title , image , heart icon ...)
+2)masonry layout 
+with pin compnent
+3)pin page (display pins in a full screen with tile =>when we press a pin we pass to this pin page)
+
+4)profile screen
+icons
+image
+name
+masonry layout of picture related to the profile 
+
+
+
+
+5) create a pin screen(uplode a pin)
+-image Picker 
+-TextInput
+-Submit Button
