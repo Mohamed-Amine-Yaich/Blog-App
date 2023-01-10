@@ -1,27 +1,28 @@
 import { AntDesign } from "@expo/vector-icons";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { View, Image, Text, StyleSheet, Pressable } from "react-native";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import { useNhostClient } from "@nhost/react";
+import { useNavigation } from "@react-navigation/native";
 import RemoteImg from "./RemoteImg";
 
 export default function Pin(props) {
   const { uri, title, id } = props.pin;
-  console.log(props);
-  const [imgUri, setImgUri] = useState<String>("");
-  const navigation = useNavigation();
-  const route = useRoute();
+  const [ratio, setRatio] = React.useState(1);
 
-  const nhost = useNhostClient();
+  const navigation = useNavigation();
 
   const gotToPinScreen = () => {
     navigation.navigate("PinScreen", { id });
   };
 
+  React.useEffect(() => {
+    if (uri) {
+      Image.getSize(uri, (width, height) => setRatio(width / height));
+    }
+  }, []);
   return (
     <Pressable onPress={gotToPinScreen} style={styles.pinContainer}>
       <View>
-        <RemoteImg pinImg={uri } radius={25} />
+        <Image source={{ uri }} style={[styles.img, { aspectRatio: ratio }]} />
         <Pressable style={styles.heart}>
           <AntDesign name="hearto" size={25} color="black" />
         </Pressable>

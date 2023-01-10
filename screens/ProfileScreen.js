@@ -5,7 +5,7 @@ import { StyleSheet, View, Text, Image, ScrollView } from "react-native";
 import Masonry from "react-native-masonry-layout";
 import Pin from "../components/Pin";
 import {
-  NhostClient,
+  
   useNhostClient,
   useSignOut,
   useUserDisplayName,
